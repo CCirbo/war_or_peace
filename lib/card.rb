@@ -8,6 +8,5 @@ class Card
         @rank = rank
         @suit = suit
         @value = value
-
     end
 end
