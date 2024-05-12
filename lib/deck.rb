@@ -1,8 +1,10 @@
 class Deck
     attr_reader :cards
+                # :high_cards
 
     def initialize(cards)
         @cards = cards
+        # @high_cards = high_cards
     end
 
     def rank_of_card_at(index)
@@ -11,13 +13,13 @@ class Deck
       
     def high_ranking_cards
         high_cards = []
-        x = @cards.each do |card|
+        @cards.each do |card|
             if card.rank >= 11 
                 high_cards << card 
             end    
-        end
+        end    
         high_cards
-
+    end        
         # foo = @cards.map do |card|
         #     if card.rank >= 11 
         #         card  
@@ -28,22 +30,19 @@ class Deck
         #     card.rank >= 11
         # end
         # bar 
-    end
+    # end
 
     def percent_high_ranking_cards
-        #might need a to_f to make a string into a float
-        #need a mehthod to show
-        #100 percent divided by number of (cards) because right now 
-        #I have three cards, times (high cards) which right now is 
-        #two cards equals 66.67 percent but I need to round to two 
-        #decimal places to get to 66.67 percent. Write the code so that 
-        #when we get to four cards, the percentage will be 50 percent
-        # 100.to_f / 3 or 100_fdiv(3)
-
-        #100.00 / number from @cards * number from 
-        #high_ranking_cards.round(2)
-
+         (self.high_ranking_cards.count.to_f / @cards.count* 100).round(2)
+    end    
+ 
+    def remove_card
+        @cards.shift
     end
-        
+
+    def add_card(card)
+        @cards.push(card)
+    end
+           
 end
 
