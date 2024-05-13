@@ -39,9 +39,32 @@ RSpec.describe Turn do
         expect(@player2.deck).to eq(@deck2)
     end
 
-    it "spoils_of_war" do #This needs to return #=> []
-
+    xit "player1 turn" do
+        expect(@turn)
     end
+
+    it "spoils_of_war" do 
+        expect(@turn.spoils_of_war).to eq([])
+    end
+
+    xit "turn type" do
+        expect(@turn.type).to be a(type)
+    end
+
+    xit "basic turn" do
+        expect(@turn.type).to eq(:basic)
+    end
+
+    xit "war turn" do
+        expect(@turn.type).to eq(:war)
+    end
+
+    xit "destruction turn" do
+    expect(@turn.type).to eq(:mutually_assured_destruction)
+    end 
+end
+
+
 
     
     # pry(main)> turn.type
@@ -62,5 +85,5 @@ RSpec.describe Turn do
 # pry(main)> player2.deck
 #=> #<Deck:0x007fa3ee11ee48 @cards=[#<Card:0x007fa3ee14ef80...>, #<Card:0x007fa3eda3e1f0...>, #<Card:0x007fa3edad1cc0...>]>
     
-end
+
 
