@@ -11,7 +11,7 @@ class Deck
 
     def rank_of_card_at(index)
         @cards[index].rank
-       binding.pry
+     
     end
       
     def high_ranking_cards
