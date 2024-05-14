@@ -37,7 +37,7 @@ class Deck
 
     def percent_high_ranking_cards
          (self.high_ranking_cards.count.to_f / @cards.count* 100).round(2)
-    end    #So proud of myself for this one!!
+    end   
  
     def remove_card
         @cards.shift
