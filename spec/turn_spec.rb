@@ -28,30 +28,18 @@ RSpec.describe Turn do
 
     it "it exists" do
         expect(@turn).to be_an_instance_of(Turn)    
-    # pry(main)> turn.player1
-    #=> #<Player:0x007fa3edae29d0 @deck=#<Deck:0x007fa3eda472c8...>, @name="Megan">
     end
 
     it "has attributes" do 
-        expect(@player1.name).to eq("Megan")
-        expect(@player1.deck).to eq(@deck1)
-        expect(@player2.name).to eq("Aurora")
-        expect(@player2.deck).to eq(@deck2)
-    end
-
-    xit "player1 turn" do
-        expect(@turn)
-    end
-
-    it "spoils_of_war" do 
+        expect(@turn.player1).to eq(@player1)
+        expect(@turn.player2).to eq(@player2)
         expect(@turn.spoils_of_war).to eq([])
+        # expect(@player1.deck).to eq(@deck1)
+        # expect(@player2.name).to eq("Aurora")
+        # expect(@player2.deck).to eq(@deck2)
     end
 
-    xit "turn type" do
-        expect(@turn.type).to be a(type)
-    end
-
-    xit "basic turn" do
+    it "basic turn" do
         expect(@turn.type).to eq(:basic)
     end
 
@@ -62,10 +50,36 @@ RSpec.describe Turn do
     xit "destruction turn" do
     expect(@turn.type).to eq(:mutually_assured_destruction)
     end 
+
+    xit "winner is determined" do
+        expect(@turn.winner).to eq(placeholder for now)
+    end
+
+    xit "piles of cards" do
+        
+    end
+
+    xit "award the spoils of war to winner" do
+        expect(@turn.award_spoils).to eq(winner)
+        expect(@turn.player1.deck).to eq(@deck1)
+        expecct(@turn.player2.deck).to eq(@deck2)
+    end
+
+  
+
 end
 
 
-
+# it "has lost" do
+#     expect(@player.has_lost?).to eq(false)
+#     @player.deck.remove_card
+#     expect(@player.has_lost?).to eq(false)
+#     @player.deck.remove_card
+#     expect(@player.has_lost?).to eq(false)
+#     @player.deck.remove_card
+#     expect(@player.has_lost?).to eq(true)
+#     expect(@player.deck).to eq(@deck)
+# end
     
     # pry(main)> turn.type
 #=> :basic

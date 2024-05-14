@@ -2,38 +2,42 @@ class Turn
     attr_reader :player1,
                 :player2,
                 :spoils_of_war
-                :type
-
+              
                 
    def initialize(player1, player2)
     @player1 = player1
     @player2 = player2
-    # @type = type
+    @spoils_of_war = []
 
    end
 
-   def spoils_of_war
-    #This needs to return #=> []
-    spoils_of_war = []
-   end
-
-   def type(:basic, :war, :mutually_assured_destruction)
    
-   
-   def basic_turn
-    # @deck.rank_of_card_at(0)
-    #players' decks are not the same rank
+#    def basic_turn
+#     # @player1.deck.rank_of_card_at(0)
+#     #players' decks are not the same rank
+#    end
+
+#    def war_turn
+#     # @player1.deck.rank_of_card_at(0)
+#     # turn occurs when both players’ are the same.
+#    end
+
+#    def mutually_assured_destruction
+#     # @deck.rank_of_card_at(0) AND @deck.rank_of_card_at(2)
+#     # occurs when both players’ are the same.
+#    end
+
+   def type 
+    if @player1.deck.rank_of_card_at(0) != @player2.deck.rank_of_card_at(0)
+     return :basic
+    elsif @player1.deck.rank_of_card_at(0) == @player2.deck.rank_of_card_at(0)
+    return :war
+    else @player1.deck.rank_of_card_at(0) == @player2.deck.rank_of_card_at(0) 
+      && @player1.deck.rank_of_card_at(2) == @player2.deck.rank_of_card_at(2)
+      return :mutually_assured_destruction
+    end  
    end
 
-   def war_turn
-    # @deck.rank_of_card_at(0)
-    # turn occurs when both players’ are the same.
-   end
-
-   def mutually_assured_destruction
-    # @deck.rank_of_card_at(0) AND @deck.rank_of_card_at(2)
-    # occurs when both players’ are the same.
-   end
 
    def winner
     # if the turn has a type of :basic, it will return whichever player has a higher rank_of_card_at(0)
@@ -42,13 +46,18 @@ class Turn
    end
 
    def pile_cards
-    #pile_cards: when this method is called, cards will be sent from the players’ decks into the @spoils_of_war based on these rules
+    #pile_cards: when this method is called, cards will be sent from the players’ decks into the 
+    # @spoils_of_war based on these rules
     #for a :basic turn, each player will send one card (the top card) to the spoils pile
     #for a :war turn, each player will send three cards (the top three cards) to the spoils pile
-    #for a :mutually_assured_destruction turn, each player will remove three cards from play (the top three cards in their deck). These cards are not sent to the spoils pile, they are simply removed from each players’ deck.
+    # @spoils_of_war << 
+    #for a :mutually_assured_destruction turn, each player will remove three cards from play
+    #  (the top three cards in their deck). These cards are not sent to the spoils pile, 
+    #  they are simply removed from each players’ deck.
    end
 
     def award_spoils
      # award_spoils: this method will add each of the cards in the @spoils_of_war array to the winner of the turn.
+     #if player1 wins, we have to do this @player1.deck << @spoils_of_war cards go to them.
     end
 end

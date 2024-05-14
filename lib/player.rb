@@ -9,6 +9,8 @@ class Player
     @deck = deck
    end
 
+#has lost checks if player has cards, returns false if player has at least
+#one card.
    def has_lost?
  
     if @deck.cards.length >= 1
