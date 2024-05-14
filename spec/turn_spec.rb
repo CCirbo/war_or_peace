@@ -57,7 +57,7 @@ RSpec.describe Turn do
             player1 = Player.new("Megan", deck1)
             player2 = Player.new("Aurora", deck2)
             @turn = Turn.new(player1, player2)   
-        expect(@turn.type).to eq(:war)
+            expect(@turn.type).to eq(:war)
     end
 
     it "destruction turn" do
@@ -74,7 +74,7 @@ RSpec.describe Turn do
         player1 = Player.new("Megan", deck1)
         player2 = Player.new("Aurora", deck2)
         @turn = Turn.new(player1, player2) 
-    expect(@turn.type).to eq(:mutually_assured_destruction)
+        expect(@turn.type).to eq(:mutually_assured_destruction)
     end 
 
     it "basic winner is determined" do
@@ -91,7 +91,7 @@ RSpec.describe Turn do
         player1 = Player.new("Megan", deck1)
         player2 = Player.new("Aurora", deck2)
         @turn = Turn.new(player1, player2) 
-        expect(@turn.winner).to eq(player1)
+        expect(@turn.winner).to eq(player1) #player1 should be winner
     end
 
     it "no winner" do
@@ -108,7 +108,7 @@ RSpec.describe Turn do
         player1 = Player.new("Megan", deck1)
         player2 = Player.new("Aurora", deck2)
         @turn = Turn.new(player1, player2) 
-        expect(@turn.winner).to eq("No Winner")
+        expect(@turn.winner).to eq("No Winner") #!winner ?
     end
 
     it "war winner is determined" do
@@ -125,11 +125,11 @@ RSpec.describe Turn do
         player1 = Player.new("Megan", deck1)
         player2 = Player.new("Aurora", deck2)
         @turn = Turn.new(player1, player2)  
-        expect(@turn.winner).to eq(player2)
+        expect(@turn.winner).to eq(player2) #should be player2
     end
 
     xit "piles of cards" do
-        expect().to eq()
+        expect(@turn.type).to eq(@spoils_of_war)
     end
 
     xit "award the spoils of war to winner" do
