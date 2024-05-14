@@ -1,3 +1,4 @@
+require "pry"
 class Turn
     attr_reader :player1,
                 :player2,
@@ -29,18 +30,29 @@ class Turn
 
    def type 
     if @player1.deck.rank_of_card_at(0) != @player2.deck.rank_of_card_at(0)
-     return :basic
-    elsif @player1.deck.rank_of_card_at(0) == @player2.deck.rank_of_card_at(0)
-    return :war
-    else @player1.deck.rank_of_card_at(0) == @player2.deck.rank_of_card_at(0) 
-      && @player1.deck.rank_of_card_at(2) == @player2.deck.rank_of_card_at(2)
+      return :basic
+    elsif  @player1.deck.rank_of_card_at(0) == @player2.deck.rank_of_card_at(0) &&
+      @player1.deck.rank_of_card_at(2) == @player2.deck.rank_of_card_at(2)
       return :mutually_assured_destruction
+    else @player1.deck.rank_of_card_at(0) == @player2.deck.rank_of_card_at(0)
+      return :war
+      
     end  
    end
 
 
    def winner
+    if self.type == :basic
+      player1 #if @player1.deck.rank_of_card_at(0) if player 1 card greater than player 2 card and whichever has
+      #the higher rank wins
+    # else 
+    elsif self.type == :mutually_assured_destruction
+      "No Winner"  
+    else self.type == :war
+       player2 
+    end
     # if the turn has a type of :basic, it will return whichever player has a higher rank_of_card_at(0)
+    #@player1.deck.rank_of_card_at(0) > @player2.deck.rank_of_card_at(0)
     # if the turn has a type of :war the winner will be whichever player has a higher rank_of_card_at(2)
     # if the turn has a type of :mutually_assured_destruction the method will return No Winner.
    end
@@ -48,6 +60,10 @@ class Turn
    def pile_cards
     #pile_cards: when this method is called, cards will be sent from the players’ decks into the 
     # @spoils_of_war based on these rules
+    if self.type == :basic
+      @spoils_of_war << @player1.deck.remove_card
+      @spoils_of_war << @player2.deck.remove_card
+    end
     #for a :basic turn, each player will send one card (the top card) to the spoils pile
     #for a :war turn, each player will send three cards (the top three cards) to the spoils pile
     # @spoils_of_war << 
